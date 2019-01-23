@@ -1,0 +1,31 @@
+.turn> div{
+height: 450px;
+
+}
+.turn {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-height: 100%;
+
+}
+.row continue {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+.answer{
+  background-color: #F0F7FD;
+  border-color: #d0e3f0;
+  margin-bottom: 20px;
+
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #D0E3F0;
+  cursor: pointer;
+
+
+}
+.answer:hover{
+  background-color: #d0e3f0;
+}
+

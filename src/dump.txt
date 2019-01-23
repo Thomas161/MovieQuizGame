@@ -1,0 +1,124 @@
+//lifecycle methods
+
+//   componentWillMount() {
+//     console.log("comp,will,mount");
+//   }
+//   componentDidMount() {
+//     console.log("comp,did,mount");
+//   }
+//  componentWillUnmount() {
+//     console.log("comp,unmount");
+//   }
+//   componentDidUpdate(){
+//     console.log("did update");
+//   }
+
+
+
+ //typescripting (not very useful at this stage)
+// interface SumProps{
+// s: number;
+// t: boolean;
+// }
+//   }
+
+//   onSubs(props: SumProps){
+//     return <h5>
+//       {props.s} + {props.t}
+      
+//     </h5>
+    
+//   }
+
+//dangerous, this is something to avoid look into it regarding cross site attacks
+function Frank (props){
+return <p dangerouslySetInnerHTML={{__html:props.dangerous}}>
+  </p>
+}
+
+
+// const el = <Clicker handleClick={(letter)=> {console.log(`${letter} clicked`);}} />
+
+function Cards(props){
+return <h4 style={{color: 'red'}}>{props.now}</h4>
+
+}
+
+//CANNOT RETURN A FUNCTION AS A REACT CHILD
+
+
+//dom event in onClick event in div
+
+//rendered component that triggers an event passed in as a prop
+<Noodle onEvenClick={(data)=> console.log(`Even ${data}`)} />
+
+class Noodle extends Component{
+        constructor(props){
+            super(props);
+            this.state={
+                counter: 0
+            }
+            this.handleClicks = this.handleClicks.bind(this);
+        }
+
+        handleClicks(e){
+            const clickNew = this.state.counter+1;
+            this.setState({
+                counter: clickNew
+            });
+            if(clickNew % 2 === 0){
+                this.props.onEvenClick(clickNew);
+            }
+        }
+        render(){
+            return (
+<div onClick={this.handleClicks}>
+{this.state.counter}
+
+    </div>
+            )
+        }
+    }
+
+//enzyme notes
+    describe('Testing with Enzyme', ()=> {
+// it('renders a component with a h6', ()=> {
+//   const wrapper = shallow(<Hello now={moment.toISOString()}/>);
+//   expect(wrapper.find("h6").length).toBe(1);
+// });
+
+
+it("contains 15889464z", () => {
+  const wrapper = shallow(<Hello now={moment.toISOString()} />);
+  expect(wrapper.contains(<h6>15889464z</h6>)).toNotEqual(true);
+});
+});
+
+//testing a function component
+  function Hello(props) {
+  return <h6>{props.now}</h6>
+  }
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<AuthorQuizMain />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+const moment = new Date(1588946400000);
+describe('Setup for test', ()=> {
+let result;
+  beforeAll(()=>{
+    result=Hello({now: moment.toISOString()});
+  })
+  it('Result will not render null', ()=> {
+    expect(result).not.toBeNull();
+  });
+  it('it is a h6', ()=> {
+    expect(result.type).toBe("h6");
+  });
+
+  it('it has child props',()=> {
+    expect(result.props.children).toBeTruthy();
+  })
+});

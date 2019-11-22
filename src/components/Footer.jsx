@@ -1,14 +1,13 @@
+import React from "react";
 
-import React from 'react';
-
-function Footer() {
-  return <div id="footer" className="row">
-      <div className="col-12">
-        <p className="text-muted credit">
-        
-        </p>
+export const Footer = () => {
+  return (
+    <div id="footer" className="row">
+      <div className="col-6">
+        <p className="text-muted credit"></p>
       </div>
-    </div>;
-}
+    </div>
+  );
+};
 
 export default Footer;

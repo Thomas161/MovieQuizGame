@@ -1,8 +1,7 @@
 import React from "react";
-import "../../src/App.css";
+import "../css/App.module.css";
 
-
-function Movies({ title, onClick }) {
+export const Movies = ({ title, onClick }) => {
   return (
     <div
       className="answer"
@@ -13,5 +12,5 @@ function Movies({ title, onClick }) {
       <h4>{title}</h4>
     </div>
   );
-}
+};
 export default Movies;
